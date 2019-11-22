@@ -1,0 +1,32 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="tasks">
+    <h1 class="text-center table-info">Task Schedule</h1>
+    <table class="table table-hover table-sm table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Task ID</th>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Bike ID</th>
+                <th scope="col">Customer Order ID</th>
+                <th scope="col">Date Assigned On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <div class="task">
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.employeeid }}</td>
+                    <td><a href="{% url 'tasks:detail' bikeid=task.bikeid%}">{{ task.bikeid }}</a></td>
+                    <td>{{ task.custoemrorderid }}</td>
+                    <td>{{ task.date }}</td>
+                </tr>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
