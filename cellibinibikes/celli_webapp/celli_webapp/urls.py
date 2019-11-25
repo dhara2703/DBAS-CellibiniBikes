@@ -17,6 +17,8 @@ urlpatterns = [
     re_path(r'^taskschedule/', include('taskschedule.urls')),
     re_path(r'^accounts/', include('accounts.urls')),
     re_path(r'^customers/', include('customers.urls')),
+    re_path(r'^bike/', include('bike.urls')),
+    # re_path(r'^masterInventory/', include('masterInventory.urls')),
     re_path(r'^about/$', views.about),
     re_path(r'^$', views.homepage),
 ]

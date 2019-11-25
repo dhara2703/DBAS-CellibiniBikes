@@ -22,6 +22,7 @@ class BikeModel(models.Model):
 	modelid = models.AutoField(primary_key=True)
 	modelname = models.CharField(max_length=100)
 	modeltype = models.ForeignKey(ModelType, on_delete=models.SET("Discontinued"))#do we want it to cascade delete
+	# thumb = models.ImageField(default='default.png', blank=True)
 
 	def __str__(self):
 		return self.modelname
