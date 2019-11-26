@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -16,16 +16,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+
     <title>Cellibini Bikes Company</title>
 </head>
 
 <body class="bg-light">
+    <header class="wrapper">
+        <h1>
+            <a href="{% url 'accounts:login' %}">
+                <img src="{% static 'logo.png' %}" height="5%" width="5%" alt="Cellibini Bikes" />
+            </a>&ensp;&ensp;Cellibini Bicycle Company</h1>
+        <nav>
+            <li>
+                <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        </nav>
+    </header>
     <div class="wrapper">
-        <h1><a href="{% url 'tasks:list' %}"><img src="{% static 'logo.png' %}" height="5%"
-                    width="5%" /></a>&ensp;&ensp;Cellibini Bicycle Company</h1>
         <hr>
         {% block content %}
         {% endblock %}

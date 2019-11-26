@@ -1,9 +1,9 @@
-{% extends 'base_layout.html' %}
+{% extends 'base-layout.html' %}
 
 {% block content %}
 <div class="tasks">
-    <h1 class="text-center table-info">Task Schedule</h1>
-    <table class="table table-hover table-sm table-bordered">
+    <h1 class="text-center text-info">Task Schedule</h1>
+    <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Task ID</th>
@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ task.id }}</td>
                     <td>{{ task.employeeid }}</td>
-                    <td><a href="{% url 'tasks:detail' bikeid=task.bikeid%}">{{ task.bikeid }}</a></td>
+                    <td><a href="{% url 'tasks:list' bikeid=task.bikeid%}">{{ task.bikeid }}</a></td>
                     <td>{{ task.custoemrorderid }}</td>
                     <td>{{ task.date }}</td>
                 </tr>
