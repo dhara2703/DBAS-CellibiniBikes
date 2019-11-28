@@ -1,9 +1,7 @@
 from django.db import models
-# from masterInventory.models import MasterInventory
+from masterInventory.models import MasterInventory
 from django.apps import apps
-#MasterInventoryModel = apps.get_model('masterInventory', 'MasterInventory')
 
-# Create your models here.
 
 class ModelType(models.Model):
 	class Meta:
@@ -37,32 +35,27 @@ class SubassemblyInventory(models.Model):
 	def __str__(self):
 		return self.inventoryid.partname
 
-
 class Subassembly(models.Model):
 	class Meta:
 		db_table = "jncModelSubassembly"
 		unique_together = (('modelid', 'subassemblyid'),)
 
 	modelid = models.ForeignKey(BikeModel, on_delete=models.DO_NOTHING)
-	subassemblyid = models.ForeignKey(
-		SubassemblyInventory, on_delete=models.DO_NOTHING)
+	subassemblyid = models.ForeignKey(SubassemblyInventory, on_delete=models.DO_NOTHING)
 	quantity = models.IntegerField()
 
 	def __str__(self):
 		return self.inventoryid.partname
-
 
 class PartInventory(models.Model):
 	class Meta:
 		db_table = "jncPartInventory"
 
 	partid = models.AutoField(primary_key=True)
-	inventoryid = models.ForeignKey(
-		'masterInventory.MasterInventory', blank=True, null=True, on_delete=models.DO_NOTHING)
+	inventoryid = models.ForeignKey('masterInventory.MasterInventory', blank=True, null=True, on_delete=models.DO_NOTHING)
 
 	def __str__(self):
 		return str(self.inventoryid.partname)
-
 
 class PartList(models.Model):
 	class Meta:
@@ -79,20 +72,17 @@ class PartList(models.Model):
 	def quantity(self):
 		return str(self.quantity)
 
-
 class SubassemblyPartsList(models.Model):
 	class Meta:
 		db_table = "tblSubassemblyPartsList"
 		unique_together = (('subassemblyid', 'partid'),)
 
-	subassemblyid = models.ForeignKey(
-		SubassemblyInventory, on_delete=models.DO_NOTHING)
+	subassemblyid = models.ForeignKey(SubassemblyInventory, on_delete=models.DO_NOTHING)
 	partid = models.ForeignKey('PartInventory', on_delete=models.DO_NOTHING)
 	quantity = models.IntegerField()
 
 	def __str__(self):
 		return str(self.partid)
-
 
 class Bike(models.Model):
 	class Meta:

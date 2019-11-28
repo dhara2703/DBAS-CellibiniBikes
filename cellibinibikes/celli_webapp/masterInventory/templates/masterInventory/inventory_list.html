@@ -1,0 +1,26 @@
+{% extends 'base-layout.html' %}
+
+{% block content%}
+<h1>Cellibini Bikes Inventory List</h1>
+<div class="inventory">
+	<table border="1">
+		<tr>
+			<th>Inventory ID</th>
+			<th>Part Name</th>
+			<th>Stocks on Hand</th>
+			<th>PAR Level</th>
+		</tr>
+	
+	{% for inventory in inventories %}
+	<div class="inventory">
+		<tr>
+			<td>{{inventory.inventoryid}}</td>
+			<td>{{inventory.partname}}</td>
+			<td>{{inventory.numberofstocks}}</td>
+			<td>{{inventory.parlevel}}</td>
+		</tr>
+	</div>
+	{% endfor %}
+</table>
+</div>
+{% endblock %}
