@@ -96,6 +96,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('modelid', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='bike.BikeModel')),
                 ('partid', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='bike.PartInventory')),
+                ('quantity', models.IntegerField()),
             ],
             options={
                 'db_table': 'tblPartList',

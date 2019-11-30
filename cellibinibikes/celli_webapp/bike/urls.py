@@ -5,6 +5,7 @@ app_name = 'bike'
 
 
 urlpatterns = [
-    re_path(r'^', views.model_list, name="list"),
-    re_path(r'^(?P<modelid>[\w-]+)/$', views.model_detail, name="mdetail"),
+    #re_path(r'^', views.model_list, name="list"),
+    #re_path(r'^(?P<modelid>[\w-]+)/$', views.model_detail, name="mdetail"),
+    re_path(r'^bikemodelcreate/$', views.model_create, name="mcreate"),
 ]

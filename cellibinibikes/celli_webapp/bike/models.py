@@ -19,7 +19,7 @@ class BikeModel(models.Model):
             
 	modelid = models.AutoField(primary_key=True)
 	modelname = models.CharField(max_length=100)
-	modeltype = models.ForeignKey(ModelType, on_delete=models.SET("Discontinued"))#do we want it to cascade delete
+	modeltype = models.ForeignKey(ModelType, on_delete=models.PROTECT)#do we want it to cascade delete
 	# thumb = models.ImageField(default='default.png', blank=True)
 
 	def __str__(self):
@@ -55,16 +55,16 @@ class PartInventory(models.Model):
 	inventoryid = models.ForeignKey('masterInventory.MasterInventory', blank=True, null=True, on_delete=models.DO_NOTHING)
 
 	def __str__(self):
-		return str(self.inventoryid.partname)
+		return self.inventoryid.partname
 
 class PartList(models.Model):
 	class Meta:
 		db_table = "tblPartList"
-		unique_together = (('modelid', 'partid'),)
+		unique_together = ('modelid', 'partid')
 
 	modelid = models.ForeignKey(BikeModel, on_delete=models.DO_NOTHING)
 	partid = models.ForeignKey('PartInventory', on_delete=models.DO_NOTHING)
-	quantity = models.IntegerField()
+	partlist_quantity = models.IntegerField()
 
 	def __str__(self):
 		return str(self.partid)
