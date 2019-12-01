@@ -3,7 +3,7 @@ from .models import MasterInventory
 from . import forms
 
 def inventory_list(request):
-	inventories = MasterInventory.objects.all().order_by('inventoryid')
+	inventories = MasterInventory.objects.all().order_by('mi_inventoryid')
 	return render(request, 'masterInventory/inventory_list.html', {'inventories':inventories})
 
 # def inventory_update(request):

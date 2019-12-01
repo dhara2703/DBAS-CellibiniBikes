@@ -1,6 +1,16 @@
 from django.contrib import admin
-from .models import Task
 
+# from .models import CustomerOrder
+# from .models import CustomerOrderLineItem
+# from .models import Task
+# from .models import CustomerInvoice
+# from .models import CustomerInvoiceLineItem
 
-# Register your models here.
-admin.site.register(Task)
+# # Register your models here.
+
+# admin.site.register(CustomerOrder)
+# admin.site.register(CustomerOrderLineItem)
+# admin.site.register(Task)
+# admin.site.register(CustomerInvoice)
+# admin.site.register(CustomerInvoiceLineItem)
+

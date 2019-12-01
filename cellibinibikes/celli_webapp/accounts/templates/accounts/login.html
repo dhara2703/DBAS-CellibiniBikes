@@ -7,8 +7,12 @@
     {% csrf_token %}
     <table border="1">
         {{ form }}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+
     </table>
-    <input type="submit" value="Log in">
+    <input type="submit" value="Login">
 </form>
 
 <!-- <form class="form-signin">

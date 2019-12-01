@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Task
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -16,6 +17,10 @@ def task_detail(request, bikeid):
     task = Task.objects.get(bikeid=bikeid)
     return render(request, 'taskschedule/task_detail.html', {'task': task})
 
+
+@login_required(login_url="/accounts/login/")
+def task_create(request):
+    return render(request, 'taskschedule/task_create.html')
 
 # def model_list(request):
 #     models = Model.objects.all().order_by('date')

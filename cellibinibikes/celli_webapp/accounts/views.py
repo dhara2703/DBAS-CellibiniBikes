@@ -10,7 +10,7 @@ def signup_view(request):
             user = signupForm.save()
             # log the user in
             login(request, user)
-            return redirect('tasks:list')
+            return redirect('customers:homepage')
     else:
         signupForm = UserCreationForm()
     return render(request, 'accounts/signup.html', {'form': signupForm})
@@ -23,7 +23,11 @@ def login_view(request):
             # log in the user
             user = form.get_user()
             login(request, user)
-            return redirect('tasks:list')
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('customers:homepage')
+        
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form':form})
