@@ -1,0 +1,24 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+    <div class="Order_detail">
+        <h1>Order Detail</h1>
+        <h2> Order # {{ order.so_supplierordernumber }}</h2>
+        <h3>Supplier Name: {{ order.so_supplierid }}</h3>
+        <h3>Date Ordered: {{ order.so_date }}</h3>
+            <div class="inventory">
+                <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+                    <tr align="center">
+                        <th>Part ID</th>
+                        <th>Part Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                    {% for item in orderitems %}
+                        <tr>
+                            <td>{{item.soli_inventoryid.mi_inventoryid }}</td>
+                            <td>{{item.soli_inventoryid.mi_partname }}</td>
+                            <td>{{item.soli_quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+    </div>
+{% endblock %}

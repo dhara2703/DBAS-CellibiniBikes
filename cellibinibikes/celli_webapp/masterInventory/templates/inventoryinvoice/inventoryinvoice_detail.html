@@ -1,0 +1,28 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+    <div class="Order_detail">
+        <h1>Order Invoice</h1>
+        <h2> invoice # {{ order.si_supplierinvoicenumber }}</h2>
+        <h3>Supplier Name: {{ order.so_supplierid }}</h3>
+        <h3>Date Ordered: {{ order.si_date }}</h3>
+            <div class="inventory">
+                <table border="1">
+                    <tr align="center">
+                        <th>Part ID</th>
+                        <th>Part Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    {% for item in orderitems %}
+                        <tr>
+                            <td>{{item.sili_inventoryid.mi_inventoryid }}</td>
+                            <td>{{item.sili_inventoryid.mi_partname }}</td>
+                            <td>{{item.sili_quantityshipped }}</td>
+                            <td>{{item.sili_price}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+    </div>
+    <h3>Subtotal: ${{subtotal}}(CAD)</h3>
+    <h2>Total: ${{   total }}(CAD)</h2>
+{% endblock %}

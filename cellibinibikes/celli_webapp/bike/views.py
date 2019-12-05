@@ -1,17 +1,19 @@
 from django.shortcuts import render, redirect
-from .models import ModelType, BikeModel
+from .models import *
 from . import forms
 # Create your views here.
 
 
-# def model_list(request):
-#     models = BikeModel.objects.all().order_by('date')
-#     return render(request, 'bike/model_list.html', {'models': models})
+def bike_list(request):
+	bikes = Bike.objects.all()
+	return render(request, 'bike/bike_list.html', {'bikes': bikes})
 
 
-# def model_detail(request, modelid):
-#     model = BikeModel.objects.get(modelid=modelid)
-#     return render(request, 'bike/model_detail.html', {'model': model})
+def bike_detail(request, bikeid):
+	bike = Bike.objects.get(b_bikeid=bikeid)
+	bikepartslists = PartList.objects.filter(pl_modelid=bike.b_modelid)
+	bikesubassemblys = Subassembly.objects.filter(s_modelid=bike.b_modelid)
+	return render(request, 'bike/bike_detail.html', {'bike': bike, 'bikepartslists': bikepartslists, 'bikesubassemblys': bikesubassemblys})
 
 
 def model_create(request):
@@ -30,3 +32,15 @@ def model_create(request):
 		bikemodelform = forms.BikeModelForm()
 		partlistformset = forms.PartsFormset()
 	return render(request, 'bike/model_create.html', {'bikemodelform': bikemodelform, 'partlistformset': partlistformset})
+
+
+def bikemodels_list(request):
+	BikeModels = BikeModel.objects.all()
+	return render(request, 'model/model_list.html', {'BikeModels': BikeModels})
+
+
+def bikemodel_detail(request, modelid):
+	bikeModel = BikeModel.objects.get(bm_modelid=modelid)
+	bikepartslists = PartList.objects.filter(pl_modelid=bikeModel.bm_modelid)
+	bikesubassemblys = Subassembly.objects.filter(s_modelid=bikeModel.bm_modelid)
+	return render(request, 'model/model_detail.html', {'bikeModel': bikeModel, 'bikepartslists': bikepartslists, 'bikesubassemblys': bikesubassemblys})

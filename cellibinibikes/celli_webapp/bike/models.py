@@ -74,9 +74,9 @@ class PartList(models.Model):
 	pl_quantity = models.IntegerField(default=0)
  
 	def __str__(self):
-    		return str(self.partid)
+    		return str(self.pl_partid)
 	def quantity(self):
-		return str(self.quantity)
+		return str(self.pl_quantity)
 
 class SubassemblyPartsList(models.Model):
 	class Meta:

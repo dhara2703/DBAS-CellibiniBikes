@@ -1,0 +1,32 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+    <div class="Bike-detail">
+        <img src="{{ bikeModel.bm_thumb.url }}" />
+        <h2>Model Name: {{ bikeModel.bm_modelname }}</h2>
+        <p>Model Type: {{ bikeModel.bm_modeltype}}</p>
+        <p>Price: (CAD)&#36; {{bikeModel.bm_modelprice}}</p>
+
+        <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+        <tr>
+            <th>Part Name</th>
+            <th>Quanity</th>
+        </tr>
+        {% for bikepartslist in bikepartslists %}
+        <div class="inventory">
+            <tr>
+                <td>{{ bikepartslist.pl_partid }}</td>
+                <td>{{bikepartslist.pl_quantity}}</td>
+            </tr>
+        </div>
+        {% endfor %}
+        {% for bikesubassembly in bikesubassemblys %}
+        <div class="inventory">
+            <tr>
+                <td>{{ bikesubassembly.s_subassemblyid }}</td>
+                <td>{{bikesubassembly.s_quantity}}</td>
+            </tr>
+        </div>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}

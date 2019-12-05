@@ -1,0 +1,24 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+<br /><br /><br />
+	<div class="models">
+		<h1 class="text-center text-info">Supplier List</h1>
+		<table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+			<tr>
+				<th>Company Name</th>
+				<th>Contact Name</th>
+				<th>Contact Number</th>
+				<th>Email Address</th>
+			</tr>
+		
+		{% for supplier in suppliers %}
+			<tr>
+				<td>{{ supplier.s_companyname }}</td>
+				<td>{{ supplier.s_suppliername }}</td>
+				<td>{{ supplier.s_phone }}</td>
+				<td>{{ supplier.s_email }}</td>
+			</tr>
+	{% endfor %}
+	</table>
+</div>
+{% endblock %}

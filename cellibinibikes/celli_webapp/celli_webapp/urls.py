@@ -4,10 +4,14 @@ from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
+from accounts import views as accounts_views
 
 # Change admin site title
 admin.site.site_header = "Cellibini Bikes Company WebApp Login"
 admin.site.site_title = "Cellibini Bikes Company"
+
+app_name = 'celli_webapp'
+
 
 urlpatterns = [
     # path('admin/', admin.site.urls),

@@ -1,9 +1,10 @@
 {% extends 'base-layout.html' %}
 
 {% block content%}
-<h1>Cellibini Bikes Inventory List</h1>
-<div class="inventory">
-	<table border="1">
+<br /><br /><br />
+<h1 class="text-center text-info">Cellibini Bikes Inventory List</h1>
+<div class="table table-hover table-sm table-bordered mx-auto">
+	<table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
 		<tr>
 			<th>Inventory ID</th>
 			<th>Part Name</th>
@@ -16,7 +17,7 @@
 		<tr>
 			<td>{{inventory.mi_inventoryid}}</td>
 			<td>{{inventory.mi_partname}}</td>
-			<td>{{inventory.numberofstocks}}</td>
+			<td>{{inventory.mi_parlevel}}</td>
 			<td>{{inventory.mi_numberofstocks}}</td>
 		</tr>
 	</div>

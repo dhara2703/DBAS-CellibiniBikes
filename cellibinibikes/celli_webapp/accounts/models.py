@@ -28,12 +28,20 @@ class Employee(models.Model):
     #     return super(Employee, self).get_queryset().filter(isapprentice = True)
 
     def __str__(self):
-        return str(self.e_employeeid)
+        return str(self.e_userid.username)
+    
+    def firstname(self):
+        return str(self.e_userid.first_name)
 
+    def lastname(self):
+        return str(self.e_userid.last_name)
+    
+    def formatted_salary(self):
+        return '%.2f CAD' % self.e_salary
 
 class Customer(models.Model):
     class Meta:
-        db_table = "tblCutomer"
+        db_table = "tblCustomer"
 
     c_customerid = models.AutoField(primary_key=True)
     c_userid = models.OneToOneField(User, on_delete=models.PROTECT)
@@ -51,3 +59,9 @@ class Customer(models.Model):
 
     def __str__(self):
         return str(self.c_customerid)
+    
+    def firstname(self):
+        return str(self.c_userid.first_name)
+    
+    def lastname(self):
+        return str(self.c_userid.last_name)

@@ -12,8 +12,28 @@ class CustomerOrder(models.Model):
     co_corderdate = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.cocustomeroderid)
+        return str(self.co_customeroderid)
+    
+    def firstname(self):
+        return str(self.co_customeroderid.c_userid.first_name)
+    
+    def lastname(self):
+        return str(self.co_customeroderid.c_userid.last_name)
+    
+    def companyname(self):
+        return str(self.co_customeroderid.c_companyname)
 
+    def phonenumber(self):
+        return str(self.co_customeroderid.c_phonenumber)
+    
+    def address(self):
+        return ('%s %s %s' % (self.co_customeroderid.c_streetaddress1, 
+                              self.co_customeroderid.c_streetaddress2,  
+                              self.co_customeroderid.c_city, 
+                              self.co_customeroderid.c_province,
+                              self.co_customeroderid.c_postalcode))
+        
+    
 
 class CustomerOrderLineItem(models.Model):
     class Meta:

@@ -1,0 +1,22 @@
+{% extends 'base-layout.html' %}
+
+{% block content%}<br /><br /><br />
+<h1 class="text-center text-info">Cellibini Bikes Inventory Invoice List History</h1>
+<div class="Order List">
+	<table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+		<tr>
+			<th>Invoice number</th>
+			<th>Date</th>
+		</tr>
+	
+	{% for order in orders %}
+	<div class="inventory">
+		<tr align="center">
+			<td><a href="{% url 'masterInventory:inventoryinvoicedetail' invoiceid=order.si_supplierinvoiceid %}">{{order.si_supplierinvoicenumber}}</td>
+			<td>{{order.si_date}}</td>
+		</tr>
+	</div>
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

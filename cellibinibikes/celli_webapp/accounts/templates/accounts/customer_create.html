@@ -1,0 +1,27 @@
+{% extends 'base-layout.html' %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="'row">
+        {% block content %}
+        <br />
+        <br />
+        <br />
+        <h1 class="text-center text-info">Add Customer</h1>
+        <div class="row d-flex justify-content-center">
+            <form class="col-6" action="{% url 'accounts:ccreate' %}" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                {{ create_customer|crispy }}
+                <!-- <input type="submit" value="Create"> -->
+                <div class="row d-flex justify-content-center">
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-success">Add Customer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endblock %}
+    </div>
+
+</div>

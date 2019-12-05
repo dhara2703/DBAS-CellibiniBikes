@@ -1,0 +1,32 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+	<div class="'create-inventory-order">
+    <br /><br /><br />
+<h1 class="text-center text-info">Create Order Request</h1>
+		<form class="" action="{% url 'masterInventory:inventoryorder' %}" method="post"
+			enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ io_form }}
+			<br/>
+			<div class="row d-flex justify-content-center">
+				<table border="1">
+					<tr>
+						<th>Part Name</th>
+						<th>PAR</th>
+						<th>Stocks on Hand</th>
+						<th>Order</th>
+					</tr>
+					{% for part in partform %}
+						<tr>
+							<td>{{part.name }}</td>
+							<td>{{part.par }}</td>
+							<td>{{part.onhand }}</td>
+							<td><input type="number" id="{{ part.name }}" name="orderitem" value=0></td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<input type="submit" value="Create">
+		</form>
+	</div>
+{% endblock %}

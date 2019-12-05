@@ -1,0 +1,46 @@
+{% extends 'base-layout.html' %}
+
+{% block content %}<br /><br /><br />
+<div class="employees">
+    <h1 class="text-center text-info">Employee List</h1>
+    <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Joined Date</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Job Type</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <div class="employees-list">
+                <tr>
+                    <td>{{ employee.e_userid.id }}</td>
+                    <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+                    <td>{{ employee.e_streetaddress1 }} {{ employee.e_streetaddress2 }},
+                        {{ employee.e_city }} {{ employee.e_province }} - {{ employee.e_postalcode }}
+                        {{ employee.e_country }}</td>
+                        <td>{{ employee.e_startdate }}</td>
+                        <td>$ {{ employee.formatted_salary }}</td>
+                    {% if employee.e_isapprentice %}
+                    <td align="center" style="text-align:center; font-size:100%; font-weight:bold; color:green;">
+                        Apprentice</td>
+                    {% else %}
+                    <td align="center" style="text-align:center; font-size:100%; font-weight:bold; color:red;">
+                        Full-Time</td>
+                    {% endif %}
+
+
+
+                </tr>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

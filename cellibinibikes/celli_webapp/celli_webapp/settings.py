@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'customers',
     'bike',
     'masterInventory',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +58,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'celli_webapp.urls'
+
 
 TEMPLATES = [
     {
@@ -153,3 +157,4 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

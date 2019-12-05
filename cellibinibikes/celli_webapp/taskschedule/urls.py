@@ -6,12 +6,7 @@ app_name = 'tasks'
 
 urlpatterns = [
     re_path(r'^$', views.task_list, name='list'),
+    re_path(r'schedulelist^$', views.schedule_list, name='slist'),
     re_path(r'^create/$', views.task_create, name='create'),
-    re_path(r'^(?P<bikeid>[\w-]+)/$', views.task_detail, name="detail"),
-    
-    # re_path(r'^models', views.model_list, name="list"),
-    # re_path(r'^models/^(?P<modelid>[\w-]+)/$', views.model_detail, name="mdetail"),
-
-    # path('', views.task_list),
-    # path('<slug>/', views.task_detail)
+    re_path(r'^createschedule/$', views.schedule_create, name='screate'),    
 ]

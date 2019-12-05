@@ -1,0 +1,20 @@
+{% extends 'base-layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <br /><br /><br />
+    <h1 class="text-center text-info">Customer Order Create</h1>
+   
+    <form action="{% url 'accounts:ecreate' %}" method=" post">
+         {% csrf_token %}
+        <select>
+           
+        </select>
+        <input type="submit" value="Select">
+    </form>
+    Customer ID: 
+
+</div>
+
+{% endblock %}

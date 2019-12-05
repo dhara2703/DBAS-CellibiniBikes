@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 ('c_userid', models.OneToOneField(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'db_table': 'tblCutomer',
+                'db_table': 'tblCustomer',
             },
         ),
     ]

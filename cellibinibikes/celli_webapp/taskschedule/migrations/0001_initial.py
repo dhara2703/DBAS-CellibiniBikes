@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='Task',
             fields=[
                 ('t_taskid', models.AutoField(primary_key=True, serialize=False)),
-                ('t_taskassigneddate', models.DateTimeField(auto_now_add=True)),
+                ('t_taskcreated', models.DateTimeField(auto_now_add=True)),
                 ('t_isactive', models.BooleanField(default=True)),
                 ('t_istaskcomplete', models.BooleanField(default=False)),
                 ('t_bikeid', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='bike.Bike')),

@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -20,28 +26,28 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
 
     <title>Cellibini Bikes Company</title>
+    
 </head>
 
 <body class="bg-light">
-    <header class="wrapper">
-        <h1>
-            <a href="{% url 'accounts:login' %}">
-                <img src="{% static 'logo.png' %}" height="5%" width="5%" alt="Cellibini Bikes" />
-            </a>&ensp;&ensp;Cellibini Bicycle Company</h1>
-        <nav>
-            <li>
-                <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit">Logout</button>
-                </form>
-            </li>
-        </nav>
-    </header>
+        {% include 'navbar.html' %}
+       
     <div class="wrapper">
-        <hr>
         {% block content %}
         {% endblock %}
     </div>
 </body>
 
+<footer class="bg-dark text-white" style="position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;">
+    <p>
+       Cellibini Bicycle Company Web App : 
+       <span>
+           Created By - Dhara Savaliya, Kevin Astilla and Sara Bhatti
+       </span>
+    </p>
+    
+</footer>
+</body>
+
+</html>
 </html>

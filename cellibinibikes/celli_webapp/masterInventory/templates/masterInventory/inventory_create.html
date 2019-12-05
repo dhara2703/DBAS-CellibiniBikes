@@ -1,8 +1,11 @@
 {% extends 'base-layout.html' %}
 
 {% block content %}
+<br />
+<br />
+<br />
+<h1 class="text-center text-info">Create Inventory Item</h1>
 <div class="'create-quote">
-	<h2>Create Inventory Item</h2>
 	<form class="site-form" action="{% url 'masterInventory:inventoryadd' %}" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ form }}

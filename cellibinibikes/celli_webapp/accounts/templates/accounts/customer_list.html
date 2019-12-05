@@ -1,0 +1,45 @@
+{% extends 'base-layout.html' %}
+
+{% block content %}
+<br /><br /><br />
+<div class="customers">
+    <h1 class="text-center text-info">Customer List</h1>
+    <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Company Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Registered on</th>
+                <th scope="col">Subscribed User</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <div class="customers-list">
+                <tr>
+                    <td>{{ customer.c_customerid }}</td>
+                    <td>{{ customer.firstname }} {{ customer.lastname }}</td>
+                    <td>{{ customer.c_companyname }}</td>
+                    <td>{{ customer.c_streetaddress1 }} {{ customer.c_streetaddress2 }},
+                        {{ customer.c_city }} {{ customer.c_province }} - {{ customer.c_postalcode }}
+                        {{ customer.c_country }}</td>
+                     <td>{{ customer.c_dateregistered }}</td>
+                     {% if customer.c_issubscribed %}
+                     <td align="center" style="text-align:center; font-size:100%; font-weight:bold; color:green;">
+                         Subscribed</td>
+                     {% else %}
+                     <td align="center" style="text-align:center; font-size:100%; font-weight:bold; color:red;">
+                         Not Subscribed</td>
+                     {% endif %}
+                    
+                </tr>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

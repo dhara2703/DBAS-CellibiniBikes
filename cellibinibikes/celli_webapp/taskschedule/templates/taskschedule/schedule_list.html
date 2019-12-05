@@ -1,0 +1,56 @@
+{% extends 'base-layout.html' %}
+
+{% block content %}
+<br /><br /><br />
+
+<div class="tasks">
+    <h1 class="text-center text-info">Employee Schedule</h1>
+    <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+        <thead class="thead-dark text-center">
+            <tr>
+                <th scope="col"> ID</th>
+                <th scope="col">Bike Model</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Date Assigned On</th>
+                <th scope="col">Task Status</th>
+                <th scope="col">Assign Task</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <div class="tasks-list">
+                <tr>
+                    <td>{{ task.t_taskid }}</td>
+                    <td>{{ task.bikemodel }}</td>
+                    <td>{{ task.t_customeroderid }}</td>
+                    <td>{{ task.firstame }} {{ task.lastame }} {{ task.companyname }}</td>
+                    <td>{{ task.t_taskcreated }}</td>
+                    {% if task.t_istaskcomplete %}
+                    <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">
+                        &#10004;</td>
+                    {% else %}
+                    <td align="center" style="text-align:center; font-size:150%; font-weight:bold; color:red;">
+                        &times;</td>
+                    {% endif %}
+                    <td>
+
+                        <a href="{% url 'tasks:createschedule t_taskid=t_taskid'}">
+                                <button type="button" class="btn btn-secondary">
+                                    <span class="cui-contrast">
+                                        Assign Task
+                                </span>
+                            </button>
+
+                            </a>
+                    </td>
+
+
+                </tr>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

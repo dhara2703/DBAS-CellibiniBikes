@@ -53,6 +53,7 @@ class SupplierInvoice(models.Model):
 
 	si_supplierinvoiceid = models.AutoField(primary_key=True)	
 	si_supplierinvoicenumber = models.CharField(max_length=16)
+	soli_supplierordernumber = models.ForeignKey(SupplierOrder, on_delete=models.PROTECT)
 	si_date = models.DateTimeField()
 	si_hst = models.DecimalField(max_digits=3, decimal_places=2)
 
@@ -70,9 +71,10 @@ class Defect(models.Model):
         db_table = "tblDefect"
     
     d_defectid = models.AutoField(primary_key=True)
-    d_supplierordernumber = models.ForeignKey(SupplierOrder, on_delete=models.PROTECT)
+    d_supplierinvoicenumber = models.ForeignKey(SupplierInvoice, on_delete=models.PROTECT)
+    d_inventoryid = models.ForeignKey(MasterInventory,on_delete=models.PROTECT)#make this dependant to the invoice number
     d_employeeid = models.ForeignKey(
     	'accounts.Employee', on_delete=models.PROTECT)
     d_quantity = models.IntegerField(default=0)
     d_date = models.DateTimeField(auto_now_add=True)
-    d_defectdesc = models.CharField(max_length=200, default="")
+    d_defectdesc = models.CharField(max_length=150, default="")

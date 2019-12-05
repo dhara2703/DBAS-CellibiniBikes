@@ -1,0 +1,21 @@
+{% extends 'base-layout.html' %}
+
+{% block content %}
+<div class="models">
+    <br /><br /><br />
+      <h1 class="text-center text-info">Bike List</h1>
+    {% for bike in bikes %}
+    <div class="model">
+        <div class="card mb-3">
+            <img class="card-img-top" src="{{ bike.b_modelid.bm_thumb.url }}" alt="Cellibini Bike">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'bike:bikedetail' bikeid=bike.b_bikeid%}">{{ bike.b_bikeid }}</a></h5>
+                <p class="card-text">{{ bike.b_modelid }}</p>
+                <p class="card-text">{{ bike.b_bikestatusid }}</p>
+                <!-- <p class="card-text"><small class="text-muted">Invented on: {{ model.date }}</small></p> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

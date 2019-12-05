@@ -1,32 +1,43 @@
 {% extends 'base-layout.html' %}
 
 {% block content %}
-<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> -->
 <!-- <h1>Log in</h1> -->
-<form class="site-form" action={% url 'accounts:login' %} method="post">
+<!-- <form class="site-form" action={% url 'accounts:login' %} method="post">
     {% csrf_token %}
     <table border="1">
         {{ form }}
         {% if request.GET.next %}
-            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
         {% endif %}
 
     </table>
     <input type="submit" value="Login">
-</form>
-
-<!-- <form class="form-signin">
-     {% csrf_token %}
-    <img class="mb-4" src="logo.png" alt="" width="72" height="72">
-    <label for="inputEmail" class="sr-only">User Name</label>
-    <input type="text" id="inputUserName" class="form-control" placeholder="User name" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div> 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form> -->
+<section class="min-vh-100 bg-light">
+        <br /><br /><br />
+        <br />
+        <div class="container bg-grey">
+            <div class="row text-white bg-secondary">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h2 class="display-4 py-2 text-truncate ">Please sign in</h2>
+                    <div class="px-2">
+                       <form class="form-signin" action="{% url 'accounts:login' %}" method="post" id="login-form">
+                           {% csrf_token %}
+                           <h2 class="form-signin-heading">{{ message }}</h2>
+                           <label for="id_username" class="sr-only">Email address</label>
+                           <input type="text" name="username" id="id_username" class="form-control"
+                               placeholder="User Name" required autofocus><br /><br />
+                           <label for="id_password" class="sr-only">Password</label>
+                           <input type="password" name="password" id="id_password" class="form-control"
+                               placeholder="Password" required>
+                           <br /><br />
+                           <button class="btn btn-lg btn-info btn-block" type="submit">Sign in</button>
+                       </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+
 {% endblock %}
