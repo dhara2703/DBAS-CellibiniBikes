@@ -1,0 +1,26 @@
+{% extends 'base-layout.html' %}
+
+{% block content %}
+
+<div class="models" style="display: grid;grid-template-columns: 1fr 1fr 1fr;grid-gap: 30px;">
+<br />
+<br />
+<br />
+{% for model in models %}
+ <br />
+ <br />
+ <br />
+    <div class="model" style="padding: 10px;border: 1px solid #00dba0;position: relative;padding-bottom: 40px;">
+        <div class="card mb-3">
+            <img class="card-img-top" src="{{ model.bm_thumb.url }}" alt="Cellibini Bike">
+            <div class="card-body">
+                <h5 class="card-title">{{ model.modeltype }}</h5>
+                <p class="card-text"><a href="{% url 'tasks:detail' modelid=model.modelid%}">{{ model.modelid }}</a></p>
+                <p class="card-text">{{ model.modelname }}</p>
+                <!-- <p class="card-text"><small class="text-muted">Invented on: {{ model.date }}</small></p> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,6 +1,23 @@
 {% extends 'base-layout.html' %}
 {% block content %}
-	<div class="models">
-		{{defects}}
+	<br /><br /><br />
+<h1 class="text-center text-info">Cellibini Bikes Defects Reports</h1>
+<div class="Order List">
+	<table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+		<tr>
+			<th>Invoice number</th>
+			<th>Defect total</th>
+		</tr>
+	
+	{% for defect in defects %}
+	<div class="inventory">
+		<tr align="center">
+			<td><a href="{% url 'masterInventory:defectdetail' defectinvoiceid=defect.d_supplierinvoicenumber__si_supplierinvoicenumber %}">
+			{{defect.d_supplierinvoicenumber__si_supplierinvoicenumber}}</a></td>
+			<td>{{defect.totalquantity}}</td>
+		</tr>
+	</div>
+	{% endfor %}
+</table>
 </div>
 {% endblock %}

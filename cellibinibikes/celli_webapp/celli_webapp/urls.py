@@ -20,6 +20,7 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^taskschedule/', include('taskschedule.urls')),
     re_path(r'^accounts/', include('accounts.urls')),
+    re_path(r'^accounts/', include('django.contrib.auth.urls')),
     re_path(r'^customers/', include('customers.urls')),
     re_path(r'^bike/', include('bike.urls')),
     re_path(r'^masterinventory/', include('masterInventory.urls')),

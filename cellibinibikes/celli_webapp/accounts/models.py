@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 from datetime import datetime
 
+
 # Create your models here.
 
 
@@ -38,6 +39,8 @@ class Employee(models.Model):
     
     def formatted_salary(self):
         return '%.2f CAD' % self.e_salary
+    
+        
 
 class Customer(models.Model):
     class Meta:
@@ -65,3 +68,10 @@ class Customer(models.Model):
     
     def lastname(self):
         return str(self.c_userid.last_name)
+    
+    def email(self):
+        return str.lower(self.c_userid.email)
+    
+    
+    
+    

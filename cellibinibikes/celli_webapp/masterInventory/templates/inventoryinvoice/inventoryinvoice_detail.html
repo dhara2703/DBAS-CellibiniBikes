@@ -1,5 +1,8 @@
 {% extends 'base-layout.html' %}
 {% block content %}
+<br>
+<br>
+<br>
     <div class="Order_detail">
         <h1>Order Invoice</h1>
         <h2> invoice # {{ order.si_supplierinvoicenumber }}</h2>
@@ -18,11 +21,14 @@
                             <td>{{item.sili_inventoryid.mi_inventoryid }}</td>
                             <td>{{item.sili_inventoryid.mi_partname }}</td>
                             <td>{{item.sili_quantityshipped }}</td>
-                            <td>{{item.sili_price}}</td>
+                            <td>{{item.sili_inventoryid.mi_price}}</td>
                         </tr>
                     {% endfor %}
                 </table>
     </div>
     <h3>Subtotal: ${{subtotal}}(CAD)</h3>
     <h2>Total: ${{   total }}(CAD)</h2>
+                <div class="col-3">
+                        <a href="{% url 'masterInventory:defectcreate' invoiceid=order.si_supplierinvoiceid %}"><button type="submit" class="btn btn-success">Report Defect</button></a>
+                    </div>   
 {% endblock %}

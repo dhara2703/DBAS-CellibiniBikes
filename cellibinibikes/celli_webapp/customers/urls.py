@@ -4,11 +4,14 @@ from . import views
 app_name = 'customers'
 
 urlpatterns = [
-    re_path(r'^$', views.homepage, name='homepage'),
-    re_path(r'^customer-order-list/$',
-            views.customerorder_list, name='colist'),
-    re_path(r'^customer-order-create/$', views.customerorder_create, name="ccreate"),
-
+    re_path(r'^$', views.customerorderlist, name='colist'),
+    re_path(r'^customerorderlist/$',
+            views.customerorderlist, name='colist'),
+    re_path(r'^customerordercreate/$',
+            views.customerordercreate, name="cocreate"),
+    re_path(r'^(?P<co_customeroderid_id>[\w-]+)$',
+            views.customeroderinlinecreate, name="coinlinecreate"),
+    
 
 ]
 

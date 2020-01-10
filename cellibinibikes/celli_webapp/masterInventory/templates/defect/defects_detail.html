@@ -1,0 +1,26 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+	<br /><br /><br />
+<h1 class="text-center text-info">Defect Report for Invoice {{ defectinvoiceid }}</h1>
+<div class="Order List">
+	<table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+		<tr>
+			<th>Inventory ID</th>
+			<th>Part name</th>
+			<th>Quantity</th>
+			<th>Reason</th>
+		</tr>
+	
+	{% for defect in defects %}
+	<div class="inventory">
+		<tr align="center">
+			<td>{{defect.d_inventoryid}}</td>
+			<td>{{defect.d_inventoryid.mi_partname}}</td>
+			<td>{{defect.d_quantity}}</td>
+			<td>{{defect.d_defectdesc}}</td>
+		</tr>
+	</div>
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -51,10 +51,14 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                    <h3>Inventory Report - {{ today | date:"d/m/Y" }}</h3>
+                    <h3>Order Report - {{ today | date:"d/m/Y" }}</h3>
                 </div>
                 <div class="list-group">
                     <p>Name: {{ request.user.first_name }} {{ request.user.last_name }}</p>
+                    <h1>Order Number: {{ order.so_supplierordernumber }}</h1>
+                    <h2>Supplier: {{ order.so_supplierid.s_companyname }}</h2>
+                    <h2>Date Ordered: {{ order.so_date }}</h2>
+
                 </div>
                 <table class="table">
                     <thead>
@@ -62,18 +66,16 @@
                             <tr>
                                 <th>Inventory ID</th>
                                 <th>Part Name</th>
-                                <th>Stocks on Hand</th>
-                                <th>PAR Level</th>
+                                <th>Quantity Ordered</th>
                             </tr>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for inventory in inventories %}
+                        {% for item in orderitems %}
                             <tr>
-                                <td>{{inventory.mi_inventoryid}}</td>
-                                <td>{{inventory.mi_partname}}</td>
-                                <td>{{inventory.mi_parlevel}}</td>
-                                <td>{{inventory.mi_numberofstocks}}</td>
+                                <td>{{item.soli_inventoryid.mi_inventoryid}}</td>
+                                <td>{{item.soli_inventoryid.mi_partname}}</td>
+                                <td>{{item.soli_quantity}}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Apprentices Report</title>
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 5px;
+            background-color: #fff;
+        }
+
+        .table th,
+        .table td {
+            padding: 5px;
+            vertical-align: top;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #000;
+        }
+
+        .table tbody+tbody {
+            border-top: 2px solid #000;
+        }
+
+        .table .table {
+            background-color: #fff;
+        }
+
+        .list-group {
+            display: block;
+            width: 100%;
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .list-group p {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            list-style: none;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Apprentices Report - {{ today | date:"d/m/Y" }}</h3>
+            </div>
+            <div class="list-group">
+                <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Joined Date</th>
+                        <th>Salary</th>
+                    </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for apprentice in apprentices %}
+                    <div class="apprentice-list">
+                        <tr>
+                            <td>{{apprentice.e_userid.id}}</td>
+                            <td>{{ apprentice.firstname }} {{ apprentice.lastname }}</td>
+                            <td>{{ apprentice.e_streetaddress1 }} {{ apprentice.e_streetaddress2 }},
+                                {{ apprentice.e_city }} {{ apprentice.e_province }} - {{ apprentice.e_postalcode }}
+                                {{ apprentice.e_country }}</td>
+                            <td>{{ apprentice.e_startdate }}</td>
+                            <td>$ {{ apprentice.formatted_salary }}</td>
+                            {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

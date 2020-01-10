@@ -1,5 +1,8 @@
 {% extends 'base-layout.html' %}
 {% block content %}
+<br>
+<br>
+<br>
     <div class="Order_detail">
         <h1>Order Detail</h1>
         <h2> Order # {{ order.so_supplierordernumber }}</h2>
@@ -20,5 +23,8 @@
                         </tr>
                     {% endfor %}
                 </table>
+            <div class="col-3">
+                        <a href="{% url 'masterInventory:inventoryorderapprove' orderid=order.so_supplierordernumber %}"><button type="submit" class="btn btn-success">Recieve Order</button></a>
+                    </div>   
     </div>
 {% endblock %}

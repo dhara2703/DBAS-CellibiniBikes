@@ -14,12 +14,12 @@
                         {{ user.username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-                        <a class="dropdown-item" href="#">My Profile</a>
-                        <a class="dropdown-item" href="#">Change password</a>
+                        <a class="dropdown-item" href="{% url 'accounts:profile' %}">My Profile</a>
+                        <a class="dropdown-item" href="{% url 'accounts:change_password' %}">Change password</a>
                         <div class="dropdown-divider"></div>
-                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                        <form class="dropdown-item" action="{% url 'accounts:logout' %}" method="post">
                             {% csrf_token %}
-                            <button type="submit">Logout</button>
+                            <button class="dropdown-item" type=" submit">Logout</button>
                         </form>
                     </div>
                 </li>
@@ -43,6 +43,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'accounts:ecreate' %}">Create Employee</a>
                         <a class="dropdown-item" href="{% url 'accounts:ccreate' %}">Create Customer</a>
+                        <a class="dropdown-item" href="{% url 'customers:cocreate' %}">Create Customer Order</a>
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'accounts:elist' %}">Employee List</a>
                         <a class="dropdown-item" href="{% url 'accounts:clist' %}">Customer List</a>
@@ -66,15 +68,31 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'masterInventory:inventorylist' %}">Inventory List</a>
-                        <a class="dropdown-item" href="{% url 'masterInventory:inventoryorder' %}">Inventory Order</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{% url 'masterInventory:inventoryinvoicelist' %}">Inventory Invoice List</a>
+                        <a class="dropdown-item" href="{% url 'masterInventory:inventoryorderlist' %}">Inventory Order
+                            List</a>
+                        <a class="dropdown-item" href="{% url 'masterInventory:inventoryinvoicelist' %}">Inventory
+                            Invoice List
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'masterInventory:defectslist' %}">Defects List</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Report
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'accounts:apprentices' %}">Apprentices</a>
+                        <a class="dropdown-item" href="{% url 'masterInventory:inventorylistpdf' %}">Inventory List
+                            List</a>
+                        </a>
                     </div>
                 </li>
             </ul>
             {% else %}
             <form class="form-inline ml-auto">
-                <a href="#" class="btn btn-outline-secondary">Log in</a>
+                <a href="{% url 'accounts:login' %}" class="btn btn-outline-secondary">Log in</a>
             </form>
             {% endif %}
         </div>

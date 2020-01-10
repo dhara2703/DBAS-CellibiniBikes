@@ -5,16 +5,43 @@
 <div class="container">
     <br /><br /><br />
     <h1 class="text-center text-info">Customer Order Create</h1>
-   
-    <form action="{% url 'accounts:ecreate' %}" method=" post">
-         {% csrf_token %}
-        <select>
-           
+    <form class="mx-auto" style="width: 1000px;" action="{% url 'customers:cocreate' %}" method="post">
+        {% csrf_token %}
+
+        <select class="form-control form-control-lg" name="co_customerid">
+            <option>Select Customer</option>
+            {% for customer in customers %}
+            <option value="{{ customer.c_customerid }}">{{ customer.firstname }} {{ customer.lastname }}
+            </option>
+            {% endfor %}
         </select>
-        <input type="submit" value="Select">
+        <br />
+        
+        <select class="form-control form-control-lg" name="coli_bikeid">
+                    <option>Select Bike</option>
+                    {% for bike in bikes %}
+                    <option value="{{ bike.bm_modelid }}">{{ bike.bm_modelname }}</option>
+                    {% endfor %}
+                </select>
+
+        <br />
+        <input type="number" name="coli_quantity" class="form-control form-control-lg" value=0/>
+        <select class="form-control form-control-lg" name="co_paymentmethod">
+            <option>Select Payment Type</option>
+            <option value="express">American Express</option>
+            <option value="mastercard">Mastercard</option>
+            <option value="visa">Visa</option>
+        </select>
+
+        <br />
+
+        
+        <div class="row d-flex justify-content-center">
+            <div class="col-3">
+                <button type="submit" class="btn btn-success">Create Cusotmer Order</button>
+            </div>
+        </div>
     </form>
-    Customer ID: 
 
 </div>
-
 {% endblock %}

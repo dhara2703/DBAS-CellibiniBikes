@@ -1,0 +1,38 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+<br /><br /><br />
+<div class="Customer-detail">
+    <h1 class="text-center text-info">Customer Detail for {{ customer.firstname }} {{ customer.lastname }}</h1>
+    <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+        <tr>
+            <th scope="col">ID</th>
+            <td>{{ customer.c_customerid }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <td>{{ customer.firstname }} {{ customer.lastname }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Company Name</th>
+            <td>{{ customer.c_companyname }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Address</th>
+            <td>{{ customer.c_streetaddress1 }} {{ customer.c_streetaddress2 }},
+                {{ customer.c_city }} {{ customer.c_province }} - {{ customer.c_postalcode }}
+                {{ customer.c_country }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Email address</th>
+            <td>{{ customer.email }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Phone No.</th>
+            <td>{{ customer.c_phonenumber }}</td>
+        </tr>
+
+    </table>
+
+
+</div>
+{% endblock %}

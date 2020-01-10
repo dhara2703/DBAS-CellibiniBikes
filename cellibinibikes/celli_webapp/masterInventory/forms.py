@@ -28,3 +28,22 @@ class CreateOrderLineItem(forms.ModelForm):
   #                   'soli_quantity': nameofPart
 		# }
 		widgets = {'soli_quantity': forms.IntegerField()}
+
+
+class CreateInventoryInvoice(forms.ModelForm):
+	class Meta:
+		model = models.SupplierInvoice
+		fields = ['si_supplierinvoicenumber']
+		labels ={'si_supplierinvoicenumber':'Supplier Invoice Number'}
+
+class ReportDefects(forms.ModelForm):
+	class Meta:
+		model = models.Defect
+		fields = ['d_quantity', 'd_defectdesc']
+		labels= {
+		'd_quantity':'Quantity',
+		'd_defectdesc':'description'
+		}
+		widgets = {
+		'd_defectdesc': forms.Textarea(attrs={"rows":5, "cols":20})
+		}

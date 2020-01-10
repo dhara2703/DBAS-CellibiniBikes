@@ -1,0 +1,24 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="defects-create">
+		<h1 class="text-center text-info">Report defects here</h1>
+		<form class="" action="{% url 'masterInventory:defectcreate' invoiceid=invoice.si_supplierinvoiceid %}" method="post"
+			enctype="multipart/form-data">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<select name="part">
+					{% for part in partselection %}
+					<option value="{{ part.id }}">{{ part.name }}</option>
+					{% endfor %}
+					</select>
+				</tr>
+				{{ defect_form.as_table }}
+			</table>
+			
+			<input type="submit" value="Create">
+		</form>
+{% endblock %}

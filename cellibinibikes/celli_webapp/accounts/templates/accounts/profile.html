@@ -1,0 +1,41 @@
+{% extends 'base-layout.html' %}
+
+{% block content %}
+<br />
+<br />
+<br />    
+<h1 class="text-center text-info">Profile Info</h1><br />    
+
+<table class="table table-hover table-sm mx-auto" style="width: 600px;">
+    <tr style="font-size:150%; font-weight:bold; color:midnightblue;">
+        <th scope="col">User Name</th>
+        <td >{{ user }}</td>
+    </tr>
+    <tr style="font-size:150%; font-weight:bold; color:midnightblue;">
+        <th >First Name</th>
+        <td>{{ user.first_name }}</td>
+    </tr>
+    <tr style="font-size:150%; font-weight:bold; color:midnightblue;">
+        <th >Last Name</th>
+        <td>{{ user.last_name }}</td>
+    </tr>
+    <tr style="font-size:150%; font-weight:bold; color:midnightblue;">
+        <th >Role</th>
+        {% if user.is_staff %}
+        <td>
+            Cellibini Employee</td>
+        {% else %}
+        <td>
+            Cellibini Customer</td>
+        {% endif %}
+    </tr>
+    <tr style="font-size:150%; font-weight:bold; color:midnightblue;">
+        <th>Email Address</th>
+        <td>{{ user.email }}</td>
+    </tr>
+</table>
+
+</div>
+<br /><br /><br /><br />
+
+{% endblock %}

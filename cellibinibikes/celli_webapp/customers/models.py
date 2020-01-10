@@ -15,24 +15,28 @@ class CustomerOrder(models.Model):
         return str(self.co_customeroderid)
     
     def firstname(self):
-        return str(self.co_customeroderid.c_userid.first_name)
+        return str(self.co_customerid.c_userid.first_name)
     
     def lastname(self):
-        return str(self.co_customeroderid.c_userid.last_name)
+        return str(self.co_customerid.c_userid.last_name)
     
     def companyname(self):
-        return str(self.co_customeroderid.c_companyname)
+        return str(self.co_customerid.c_companyname)
 
     def phonenumber(self):
-        return str(self.co_customeroderid.c_phonenumber)
+        return str(self.co_customerid.c_phonenumber)
     
     def address(self):
-        return ('%s %s %s' % (self.co_customeroderid.c_streetaddress1, 
-                              self.co_customeroderid.c_streetaddress2,  
-                              self.co_customeroderid.c_city, 
-                              self.co_customeroderid.c_province,
-                              self.co_customeroderid.c_postalcode))
+        return ('%s %s %s' % (self.co_customerid.c_streetaddress1,
+                              self.co_customerid.c_streetaddress2,
+                              self.co_customerid.c_city,
+                              self.co_customerid.c_province,
+                              self.co_customerid.c_postalcode))
         
+    def CustomerList(self):
+        list = co_customerid.c_userid.objects.all()
+        return list
+    
     
 
 class CustomerOrderLineItem(models.Model):
@@ -46,7 +50,10 @@ class CustomerOrderLineItem(models.Model):
     coli_isactive = models.BooleanField(default=True)
 
     def __str__(self):
-        return str(self.coli_bikeid)
+        return str(self.coli_customeroderid)
+    
+    def modelname(self):
+        return str(self.coli_bikeid.b_modelid.bm_modelname)
 
 
 class CustomerInvoice(models.Model):

@@ -30,12 +30,17 @@
 </head>
 
 <body class="bg-light">
-        {% include 'navbar.html' %}
-       
+    
+    {% include 'navbar.html' %}
+    
     <div class="wrapper">
+            <br />
         {% block content %}
         {% endblock %}
     </div>
+    <br />
+    <br />
+    <br />
 </body>
 
 <footer class="bg-dark text-white" style="position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;">

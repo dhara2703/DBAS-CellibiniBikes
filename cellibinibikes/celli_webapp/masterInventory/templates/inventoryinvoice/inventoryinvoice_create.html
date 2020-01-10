@@ -1,0 +1,36 @@
+{% extends 'base-layout.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+    <div class="Order_detail">
+        <h1>Order Invoice Approval</h1>
+        <h2>Order # {{ order.so_supplierordernumber }}</h2>
+        <h3>Supplier Name: {{ order.so_supplierid }}</h3>
+        <h3>Date Ordered: {{ order.so_date }}</h3>
+        <form class="" action="{% url 'masterInventory:inventoryorderapprove' orderid=order.so_supplierordernumber %}" method="post"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ invoice_form }}
+            <div class="inventory">
+                <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+                    <tr align="center">
+                        <th>Part ID</th>
+                        <th>Part Name</th>
+                        <th>Ordered</th>
+                        <th>Received</th>
+                    </tr>
+                    {% for part in partform %}
+                        <tr>
+                            <td>{{part.inventoryid}}</td>
+                            <td>{{part.name }}</td>
+                            <td>{{part.ordered }}</td>
+                            <td><input type="number" id="{{ part.inventoryid }}" name="orderitem" value="{{part.ordered}}"></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <input type="submit" value="Create">
+        </form>
+    </div>
+    {% endblock %}

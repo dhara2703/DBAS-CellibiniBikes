@@ -12,7 +12,7 @@
                 <th scope="col">Joined Date</th>
                 <th scope="col">Salary</th>
                 <th scope="col">Job Type</th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
                     <td>{{ employee.e_streetaddress1 }} {{ employee.e_streetaddress2 }},
                         {{ employee.e_city }} {{ employee.e_province }} - {{ employee.e_postalcode }}
                         {{ employee.e_country }}</td>
-                        <td>{{ employee.e_startdate }}</td>
-                        <td>$ {{ employee.formatted_salary }}</td>
+                    <td>{{ employee.e_startdate }}</td>
+                    <td>$ {{ employee.formatted_salary }}</td>
                     {% if employee.e_isapprentice %}
                     <td align="center" style="text-align:center; font-size:100%; font-weight:bold; color:green;">
                         Apprentice</td>
@@ -33,9 +33,6 @@
                     <td align="center" style="text-align:center; font-size:100%; font-weight:bold; color:red;">
                         Full-Time</td>
                     {% endif %}
-
-
-
                 </tr>
             </div>
             {% endfor %}

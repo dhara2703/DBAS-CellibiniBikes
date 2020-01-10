@@ -1,11 +1,39 @@
 {% extends 'base-layout.html' %}
 
 {% block content %}
+<br /><br /><br />
+<div class="customers">
+    <h1 class="text-center text-info">Customer Order List</h1>
+    <table class="table table-hover table-sm table-bordered mx-auto" style="width: 1000px;">
+        <thead class="thead-dark">
+            <tr class="text-center">
+                <th scope="col">ID</th>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col">Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customerorder in customerorders %}
+            <div class="customerorder-list">
+                <tr>
+                    <td>
+                        {{ customerorder.co_customeroderid }}
+                    </td>
+                    <td>
+                        {{ customerorder.co_customerid }}
+                    </td>
+                    <td>{{ customerorder.firstname }} {{ customerorder.lastname }}</td>
+                    <td>{{ customerorder.co_paymentmethod }}</td>
+                    <td>{{ customerorder.co_corderdate }}</td>
+                </tr>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<div class="container">
-    <h2>
-       Customer order list
-    </h2>
 </div>
+<br /><br /><br /><br />
 
 {% endblock %}
