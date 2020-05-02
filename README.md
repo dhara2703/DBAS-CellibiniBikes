@@ -1,6 +1,6 @@
 # DBAS-CellibiniBikes
 
-This project is about a bike store company where our team's 
+This project is about a bike store company where we used Django Frmaework and Python with MySQL database. 
 
 
 
